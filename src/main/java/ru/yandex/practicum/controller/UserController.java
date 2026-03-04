@@ -1,6 +1,8 @@
 package ru.yandex.practicum.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.dto.NewUserRequest;
 import ru.yandex.practicum.dto.NewUserUpdate;
@@ -16,19 +18,18 @@ public class UserController {
     UserService userService;
 
     @PostMapping
-    public UserDto createdUser() {
-        userService.createUser();
-        return null;
+    public UserDto createdUser(@Valid @RequestBody NewUserRequest request) {
+        return userService.createUser(request);
     }
 
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable("id") Long id) {
-        return null;
+        return userService.findUserById(id);
     }
 
     @GetMapping
     public List<UserDto> getAllUsers() {
-        return null;
+        return userService.findAllUsers();
     }
 
     @PutMapping("/{id}")
