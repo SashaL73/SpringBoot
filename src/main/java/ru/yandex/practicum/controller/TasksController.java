@@ -28,12 +28,12 @@ public class TasksController {
 
     @GetMapping
     public List<TaskDto> getTasks() {
-        return null;
+        return taskService.findAllTask();
     }
 
     @PutMapping("/{id}")
-    public String updateTask(@RequestBody NewTaskUpdate request) {
-        return null;
+    public TaskDto updateTask(@PathVariable("id") Long id, @RequestBody NewTaskUpdate request) {
+        return taskService.updateTask(id, request);
     }
 
     @PatchMapping("/{taskId}/assignee/{userId}")
@@ -43,7 +43,7 @@ public class TasksController {
     }
     @PutMapping("/{id}/tags")
     public TaskDto replaceTagsTask(@PathVariable("id") Long id, @RequestBody List<String> tagNames) {
-        
+        return null;
     }
 
     @DeleteMapping("/{id}")

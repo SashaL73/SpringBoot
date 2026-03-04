@@ -34,12 +34,12 @@ public class UserController {
 
     @PutMapping("/{id}")
     public UserDto updateUser(@PathVariable("id") Long id, @RequestBody NewUserUpdate request) {
-        return null;
+        return userService.updateUser(id,request);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        return null;
+    public void deleteUser(@PathVariable("id") Long id) {
+        userService.deleteUser(id);
     }
 
 

@@ -20,6 +20,6 @@ public class TaskDto {
     private LocalDate localDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Long assigneeID;
+    private Long assigneeId;
     private Set<String> tags = new HashSet<>();
 }

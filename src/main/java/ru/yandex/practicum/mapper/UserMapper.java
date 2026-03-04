@@ -2,6 +2,7 @@ package ru.yandex.practicum.mapper;
 
 import lombok.Data;
 import ru.yandex.practicum.dto.NewUserRequest;
+import ru.yandex.practicum.dto.NewUserUpdate;
 import ru.yandex.practicum.dto.UserDto;
 import ru.yandex.practicum.model.User;
 
@@ -23,5 +24,17 @@ public class UserMapper {
         userDto.setName(user.getName());
         userDto.setEmail(user.getEmail());
         return userDto;
+    }
+
+    public static User updateUser(User user, NewUserUpdate request) {
+        if (request.hasName()) {
+            user.setName(request.getName());
+        }
+
+        if (request.hasEmail()) {
+            user.setEmail(request.getEmail());
+        }
+
+        return user;
     }
 }
