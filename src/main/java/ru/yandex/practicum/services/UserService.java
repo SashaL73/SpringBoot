@@ -23,9 +23,11 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final TaskRepository taskRepository;
+    private final MapName mapName = (name -> "Good man " + name);
 
     public UserDto createUser(NewUserRequest request) {
         User user = UserMapper.mapToUser(request);
+        user.setName(mapName.mapName(user.getName()));
         return UserMapper.mapToUserDto(userRepository.save(user));
     }
 
@@ -57,6 +59,5 @@ public class UserService {
         taskRepository.clearAssignee(id);
         userRepository.deleteById(id);
     }
-
 
 }
